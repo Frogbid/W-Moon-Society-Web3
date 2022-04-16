@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Moon Society</title>
+    <link rel='stylesheet' href='assets/css/all.min.css'>
+    <link rel='stylesheet' href='assets/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style1.css">
+    <link rel="stylesheet" href="assets/css/style3.css">
+    <link rel="stylesheet" href="assets/css/style4.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: CustomBigFont;
+            src: url("assets/font/big.woff2");
+        }
+
+        @font-face {
+            font-family: CustomSmallFont;
+            src: url("assets/font/small.woff2");
+        }
+
+        .h1, h2, div {
+            font-family: CustomBigFont;
+        }
+
+        p, h3, td {
+            font-family: CustomSmallFont;
+        }
+
+        .custom-moon {
+            margin-top: -15px;
+            background-image: url("assets/images/moon_1.png");
+            background-repeat: no-repeat;
+        }
+
+        .arrow-bottom,
+        .arrow-bottom:before {
+            position: absolute;
+            left: 50%;
+        }
+
+        .arrow-bottom {
+            width: 50px;
+            height: 50px;
+            top: 65%;
+            margin: -20px 0 0 -20px;
+            -webkit-transform: rotate(45deg);
+            border-left: none;
+            border-top: none;
+            border-right: 5px #fff solid;
+            border-bottom: 5px #fff solid;
+        }
+
+        .arrow-bottom:before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            margin: -20px 0 0 -20px;
+            border-left: none;
+            border-top: none;
+            border-right: 3px #fff solid;
+            border-bottom: 3px #fff solid;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: arrow-bottom;
+        }
+
+        @keyframes arrow-bottom {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(10px, 10px);
+            }
+        }
+
+        .arrow-top,
+        .arrow-top:before {
+            position: absolute;
+            left: 50%;
+        }
+
+        .arrow-top {
+            width: 50px;
+            height: 50px;
+            top: 0%;
+            margin: -20px 0 0 -20px;
+            -webkit-transform: rotate(225deg);
+            border-left: none;
+            border-top: none;
+            border-right: 5px #fff solid;
+            border-bottom: 5px #fff solid;
+        }
+
+        .arrow-top:before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            margin: -10px 0 0 -10px;
+            border-left: none;
+            border-top: none;
+            border-right: 3px #fff solid;
+            border-bottom: 3px #fff solid;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-name: arrow-top;
+        }
+
+        @keyframes arrow-top {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(10px, 10px);
+            }
+        }
+
+        #float {
+            opacity: 0;
+            position: relative;
+            -webkit-animation: floatBubble 8s normal ease-out;
+            animation: floatBubble 8s normal ease-out;
+        }
+
+        @-webkit-keyframes floatBubble {
+            0% {
+                bottom: 0px;
+                opacity: 0;
+            }
+            50% {
+                bottom: 0px;
+                opacity: 1;
+            }
+            100% {
+                bottom: 500px;
+                opacity: 0;
+            }
+        }
+
+        @keyframes floatBubble {
+            0% {
+                bottom: 0px;
+                opacity: 0;
+            }
+            50% {
+                bottom: 0px;
+                opacity: 1;
+            }
+            100% {
+                bottom: 500px;
+                opacity: 0;
+            }
+        }
+
+        .animateTextLeft {
+            position: relative;
+            -webkit-animation: textAnimLeft 4s normal ease-out;
+            animation: textAnimLeft 4s normal ease-out;
+            animation-delay: 6s;
+        }
+
+
+        .animateTextRight {
+            position: relative;
+            -webkit-animation: textAnimRight 4s normal ease-out;
+            animation: textAnimRight 4s normal ease-out;
+            animation-delay: 6s;
+        }
+
+        @media (max-width: 800px) {
+            @-webkit-keyframes textAnimLeft {
+                0% {
+                    left: 0px;
+                }
+                100% {
+                    left: 250px;
+                }
+            }
+
+            @keyframes textAnimLeft {
+                0% {
+                    left: 0px;
+                }
+                100% {
+                    left: 250px;
+                }
+            }
+
+            @-webkit-keyframes textAnimRight {
+                0% {
+                    right: 0px;
+                }
+                100% {
+                    right: 250px;
+                }
+            }
+
+            @keyframes textAnimRight {
+                0% {
+                    right: 0px;
+                }
+                100% {
+                    right: 250px;
+                }
+            }
+        }
+
+    </style>
+</head>
+<body style="">
+
+<div class="custom-moon pt-5">
+    <!--header section starts-->
+    <section class="dark">
+        <div class="container mt-3">
+            <header class="mt-2">
+                <div class="row header-background-image">
+                    <div class="col-md-6 text-left pl-4">
+                        <img src="assets/images/mooon-logo.png" class="img-fluid" alt="image" style="width:200px;"/>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p class="mt-5 pt-4 pr-5">
+                            <a href="https://discord.gg/themoonsociety" target="_blank"><i class="fab fa-discord fa-3x text-white"></i></a>
+                            <a href="https://cdn.discordapp.com/attachments/951143874284376144/956262357179453531/LTPPR_TMS.pdf" target="_blank"><i class="fas fa-file-download fa-3x ml-4 text-white"></i></a>
+                            <a href="https://twitter.com/tms_nft" target="_blank"><i class="fab fa-twitter fa-3x ml-4 text-white"></i></a>
+                            <a href="https://instagram.com/tms_nft" target="_blank"><i class="fab fa-instagram fa-3x ml-4 text-white"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </section>
+    <!--header section ends-->
+
+    <!--event section starts-->
+    <section class="dark">
+        <div class="container-fluid-card py-4">
+            <ol class="ol-cards alternate">
+                <li style="--ol-cards-color-accent:#F721F8" class="border-even py-4">
+                    <div class="step"><i class="fas fa-lock"></i></div>
+                    <div class="title"></div>
+                    <div class="content text-center">
+                        <span class="pl-5" style="font-size:50px;">Airdrop 1</span>
+                    </div>
+                </li>
+                <li style="--ol-cards-color-accent:#ffffff" class="border-odd py-4">
+                    <div class="step"><i class="fas fa-lock"></i></div>
+                    <div class="title"></div>
+                    <div class="content">
+                        <span class="pl-5" style="font-size:50px;">Airdrop 77</span>
+                    </div>
+                </li>
+                <li style="--ol-cards-color-accent:#F721F8" class="border-even py-4">
+                    <div class="step"><i class="fas fa-lock"></i></div>
+                    <div class="title"></div>
+                    <div class="content">
+                        <span class="pl-5" style="font-size:50px;">Airdrop 153</span>
+                    </div>
+                </li>
+                <li style="--ol-cards-color-accent:#ffffff" class="border-odd py-4">
+                    <div class="step"><i class="fas fa-lock"></i></div>
+                    <div class="title"></div>
+                    <div class="content">
+                        <span class="pl-5" style="font-size:50px;">Airdrop 306</span>
+                    </div>
+                </li>
+                <li style="--ol-cards-color-accent:#F721F8" class="border-even py-4">
+                    <div class="step"><i class="fas fa-lock"></i></div>
+                    <div class="title"></div>
+                    <div class="content">
+                        <span class="pl-5" style="font-size:50px;">Airdrop 612</span>
+                    </div>
+                </li>
+                <li style="--ol-cards-color-accent:#ffffff" class="border-odd py-4">
+                    <div class="step"><i class="fas fa-lock"></i></div>
+                    <div class="title"></div>
+                    <div class="content">
+                        <span class="pl-5" style="font-size:50px;">Airdrop 1223</span>
+                    </div>
+                </li>
+                <li style="--ol-cards-color-accent:#F721F8" class="border-even py-4">
+                    <div class="step"><i class="fas fa-lock"></i></div>
+                    <div class="title"></div>
+                    <div class="content">
+                        <span class="pl-5" style="font-size:50px;">Airdrop 2446</span>
+                    </div>
+                </li>
+                <li style="--ol-cards-color-accent:#ffffff" class="border-odd py-4">
+                    <div class="step"><i class="fas fa-lock"></i></div>
+                    <div class="title"></div>
+                    <div class="content">
+                        <span class="pl-5" style="font-size:50px;">Airdrop 4992</span>
+                    </div>
+                </li>
+                <li style="--ol-cards-color-accent:#F721F8" class="border-even py-4">
+                    <div class="step" id="launch"><i class="fas fa-lock"></i></div>
+                    <div class="title"></div>
+                    <div class="content text-center" style="font-size: 40px">
+                        Launch
+                    </div>
+                </li>
+                <li style="--ol-cards-color-accent:#ffffff" class="border-odd py-4">
+                    <div class="step" id="story_intro"><i class="fas fa-unlock"></i></div>
+                    <div class="title"></div>
+                    <div class="content text-center" style="font-size: 40px">
+                        Story Intro
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div class="container-fluid mx-auto my-auto pt-5 pb-5 mt-5 mb-5" id="myDiv">
+            <div class="button-section pt-5 pb-5 mt-5 mb-5">
+                <div class="row pt-5 pb-4">
+                    <div class="col-xl-5 text-center pt-5 pb-5 mt-5 mb-5" id="textLeft">
+                        <div class="pt-5 pb-5 mt-5 mb-5 animateTextLeft">
+                            <div class="arrow-top"></div>
+                            <h2 class="buttonText mb-5">ASTRONAUTS<br> <span
+                                    style="font-size: 20px">Please Scrool Up</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 text-center pt-5 pb-5 mt-5 mb-5" id="imageCentre">
+                        <img src="assets/images/mooon-logo.png" height="250px" width="250px" id="float"/>
+                    </div>
+                    <div class="col-xl-5 text-center pt-5 pb-5 mt-5 mb-5 animateTextRight" id="textRight">
+                        <div class="pt-5 pb-5 mt-5 mb-5">
+                            <h2 class="buttonText mb-5">NEW RECRUITS <br> <span
+                                    style="font-size: 20px">Please Scrool Down</span>
+                            </h2>
+                            <div class="arrow-bottom"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!--event section ends-->
+</div>
+
+
+<div>
+
+    <!--cards section starts-->
+    <section class="dark">
+        <div class="container py-4">
+
+            <article class="postcard dark blue">
+                <a class="postcard__img_link" href="#">
+                    <img class="postcard__img" src="assets/images/team/1.png" alt="Image Title"/>
+                </a>
+                <div class="postcard__text">
+                    <h1 class="postcard__title blue text-left"><a href="#">Welcome to<br>The
+                        Moon Society</a></h1>
+                    <div class="postcard__subtitle small">
+                    </div>
+                    <div class="postcard__bar"></div>
+                    <div class="postcard__preview-txt">
+                        Our vision is to establish a strong NFT community,
+                        coming together to create unique projects.
+                        Within this community, we will enable two holders a
+                        ride of their life, providing two real life space
+                        flight tickets. For all the hodlers we will provide
+                        a strong utility use, created together with the community.
+                    </div>
+                </div>
+            </article>
+            <article class="postcard dark blue">
+                <a class="postcard__img_link" href="#">
+                    <img class="postcard__img" src="assets/images/team/2.png" alt="Image Title"/>
+                </a>
+                <div class="postcard__text">
+                    <h1 class="postcard__title blue text-left"><a href="#">Fair Distribution</a></h1>
+                    <div class="postcard__subtitle small">
+                    </div>
+                    <div class="postcard__bar"></div>
+                    <div class="postcard__preview-txt">
+                        There are no bonding curves here. Buying a TMS NFT costs 0,17 ETH; TMS membership is included.
+                    </div>
+
+                    <div class="tag__item play blue" style="padding: 20px;">
+                        <a class="btn btn-primary btn-lg custom-button" href="minting_new.html">Mint</a>
+                    </div>
+
+                </div>
+            </article>
+            <article class="postcard dark blue">
+                <a class="postcard__img_link" href="#">
+                    <img class="postcard__img" src="assets/images/team/3.png" alt="Image Title"/>
+                </a>
+                <div class="postcard__text">
+                    <h1 class="postcard__title blue text-left"><a href="#">The Specs</a></h1>
+                    <div class="postcard__subtitle small">
+                    </div>
+                    <div class="postcard__bar"></div>
+                    <div class="postcard__preview-txt">
+                      Each TMS NFT is unique and programmatically generated from 300 possible traits, including background, space suit, eyes, nose, mouth, skin color, flag. All TMS NFTs are stunning, but some are rarer than others.Each TMS NFT is unique and programmatically generated from 300 possible traits, including background, space suit, eyes, nose, mouth, skin color, flag. All TMS NFTs are stunning, but some are rarer than others.
+
+The TMS NFTs are stored as ERC-721 tokens on the Ethereum blockchain.  (See Record and Proof.) Purchasing an TMS NFT costs 0,17 ETH.
+
+To access members-only areas, TMS NFT holders will need to be signed into their Metamask Wallet.
+                </div>
+            </article>
+            <article class="postcard dark blue">
+                <a class="postcard__img_link" href="#">
+                    <img class="postcard__img" src="assets/images/team/14.png" alt="Image Title"/>
+                </a>
+                <div class="postcard__text">
+                    <h1 class="postcard__title blue text-left"><a href="#">Roadmap activations</a></h1>
+                    <div class="postcard__subtitle small">
+                    </div>
+                    <div class="postcard__bar"></div>
+                    <div class="postcard__preview-txt">
+                        When you buy a TMS NFT, you’re not simply buying an avatar or a provably-rare piece of art. You are gaining membership access to a club whose benefits and offerings will increase over time. Your TMS NFT can serve as your digital identity, and open digital doors for you.
+                </div>
+            </article>
+            <article class="postcard dark blue">
+                <a class="postcard__img_link" href="#">
+                    <img class="postcard__img" src="assets/images/team/15.png" alt="Image Title"/>
+                </a>
+                <div class="postcard__text">
+                    <h1 class="postcard__title blue text-left"><a href="#">Community tools</a></h1>
+                    <div class="postcard__subtitle small">
+                    </div>
+                    <div class="postcard__bar"></div>
+                    <div class="postcard__preview-txt">
+                    Coming Soon.
+                  </div>
+            </article>
+        </div>
+    </section>
+    <!--cards section ends-->
+
+    <!--team section starts-->
+    <section class="dark">
+        <div class="container">
+            <header class="section-header">
+                <h1 class="section-title" style="color: #F721F8FF; font-weight: bold">Our Team</h1>
+            </header>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <ul class="team">
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/1.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | WoodenHound</h3>
+                                    <div class="team__meta__designation">Digital Allrounder</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/2.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | 0xm00nb0i</h3>
+                                    <div class="team__meta__designation">Fundemental Analyst</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/3.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | DanBzl</h3>
+                                    <div class="team__meta__designation">Lead Developer</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/4.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | DatCrypt</h3>
+                                    <div class="team__meta__designation">Developer</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/5.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | 0xAntiLemming</h3>
+                                    <div class="team__meta__designation">Developer</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/6.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | VanDeRex</h3>
+                                    <div class="team__meta__designation">Marketing</div>
+                                </header>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <ul class="team">
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/7.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | Mr.DeForět</h3>
+                                    <div class="team__meta__designation">Marketing</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/8.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | Atika</h3>
+                                    <div class="team__meta__designation">Marketing</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/9.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | MadApe</h3>
+                                    <div class="team__meta__designation">Design</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/10.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | Supernova</h3>
+                                    <div class="team__meta__designation">Operations Manager</div>
+                                </header>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <ul class="team">
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/11.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | WoodenHound</h3>
+                                    <div class="team__meta__designation">OPERATIVE</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/12.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | Supernova</h3>
+                                    <div class="team__meta__designation">OPERATIVE</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/13.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | Bond3v</h3>
+                                    <div class="team__meta__designation">Design</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/14.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | Allen</h3>
+                                    <div class="team__meta__designation">Develepment</div>
+                                </header>
+
+                            </div>
+                        </li>
+                        <li class="team__members">
+                            <div class="userProfile">
+                                <figure class="userProfile__thumbnail">
+                                    <img src="assets/images/team/15.png" alt="Photo"
+                                         class="userProfile__image">
+                                </figure>
+
+
+                            </div>
+                            <div class="team__details">
+                                <header class="team__meta">
+                                    <h3 class="team__meta__title">10 CT | Olexa</h3>
+                                    <div class="team__meta__designation">Operative</div>
+                                </header>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--team section ends-->
+
+    <!--footer section starts-->
+    <section class="dark">
+        <div class="container">
+            <div class="header-background-image text-center">
+                <h1 class="pt-3 pb-3" style="font-size: 70px;font-weight: 900; color: #F721F8FF"><br>VERIFIED SMART
+                    CONTRACT</h1>
+            </div>
+            <footer class="mt-5 pt-5 big-font pb-3">
+                <div class="row text-center text-white">
+                    <div class="col-4">
+                      <a href="https://www.10ct.io/legal-notice" target="_blank" style="color:#fff">LGL NTC</a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.10ct.io/terms-conditions" target="_blank" style="color:#fff">TRMS & CNDTNS</a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.10ct.io/privacy-policy" target="_blank" style="color:#fff">PRVCY PL</a>
+                    </div>
+                    <div class="col-12 mt-5">
+                        © 2022 BY 10CT | All Rights Reserved.
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </section>
+    <!--footer section ends-->
+</div>
+
+
+<!-- partial -->
+<script src='assets/js/jquery.min.js'></script>
+<script src="assets/js/script.js"></script>
+
+<script>
+    $(function () {
+        $('html, body').animate({
+            scrollTop: $("#myDiv").offset().top
+        }, 2000);
+    });
+
+    setInterval(myTimer, 10000);
+
+    function myTimer() {
+        let width = screen.width;
+        if (width >= 800) {
+            document.getElementById("textLeft").style.left = "250px";
+            document.getElementById("textRight").style.right = "250px";
+        } else {
+            document.getElementById("float").style.opacity = "1";
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

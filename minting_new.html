@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Moon Society</title>
+    <link rel='stylesheet' href='assets/css/all.min.css'>
+    <link rel='stylesheet' href='assets/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style1.css">
+    <link rel="stylesheet" href="assets/css/style3.css">
+    <link rel="stylesheet" href="assets/css/style4.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        @font-face {
+            font-family: CustomBigFont;
+            src: url("assets/font/big.woff2");
+        }
+        
+        @font-face {
+            font-family: CustomSmallFont;
+            src: url("assets/font/small.woff2");
+        }
+        
+        .h1,
+        h2,
+        div {
+            font-family: CustomBigFont;
+        }
+        
+        p,
+        h3,
+        td {
+            font-family: CustomSmallFont;
+        }
+        
+        .custom-moon {
+            margin-top: -15px;
+            background-image: url("assets/images/moon_1.png");
+            background-repeat: no-repeat;
+        }
+        
+        .spinner-loader {
+            margin-top: 25px;
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #f721f8;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <div class="custom-moon pt-5">
+        <!--header section starts-->
+        <section class="dark">
+            <div class="container mt-3">
+                <header class="mt-2">
+                    <div class="row header-background-image">
+                        <div class="col-lg-6 text-left pl-4">
+                            <a href="index.html"><img src="assets/images/mooon-logo.png" class="img-fluid" alt="image" style="width:200px;" /></a>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <p class="mt-5 pt-4 pr-5">
+                                <a href="https://discord.gg/themoonsociety" target="_blank"><i class="fab fa-discord fa-3x text-white"></i></a>
+                                <a href="https://cdn.discordapp.com/attachments/951143874284376144/956262357179453531/LTPPR_TMS.pdf" target="_blank"><i class="fas fa-file-download fa-3x ml-4 text-white"></i></a>
+                                <a href="https://twitter.com/tms_nft" target="_blank"><i class="fab fa-twitter fa-3x ml-4 text-white"></i></a>
+                                <a href="https://instagram.com/tms_nft" target="_blank"><i class="fab fa-instagram fa-3x ml-4 text-white"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </section>
+        <!--header section ends-->
+
+        <!--event section starts-->
+        <section class="dark mt-5 pt-5">
+            <div class="container-fluid-card py-4 mt-5 pt-5" style="height: 300px">
+                <div class="container-fluid mx-auto pt-5 mt-5">
+                    <h1 class="buttonText" style="font-size: 80px">The Moon Society</h1>
+                </div>
+
+            </div>
+
+        </section>
+        <!--event section ends-->
+    </div>
+
+
+    <div>
+
+        <!--cards section starts-->
+        <section class="dark">
+            <div class="container py-4">
+
+                <article class="postcard dark blue">
+                    <a class="postcard__img_link" href="#">
+                        <img class="postcard__img" src="assets/images/team/7.png" alt="Image Title" />
+                    </a>
+                    <div class="postcard__text">
+                        <h1 class="postcard__title blue text-left text-center"><a href="#">The Moon Society</a></h1>
+                        <div class="postcard__subtitle small">
+                            <span style="color: #F721F8FF; font-size: 20px" id="totalMinted">Total Minted 0/10000</span>
+                        </div>
+                        <div class="row mx-auto">
+                            <span style="font-size: 20px"><span id="priceOfNft">0.15</span> Eth + Gas fee <br> Max 5 per transaction</span>
+                        </div>
+                        <div class="row mx-auto">
+                            <form class="form" action="#">
+                                <div class="form__wrap">
+                                    <div class="form__row">
+                                        <div class="form__field">
+                                            <button class="form__btn-add input-wrap-left" type="button" id="decrementAmountBtn">-</button>
+                                            <input class="form__input mint-input" type="number" name="#" id="amountToMint" value="1" min="1" max="5">
+                                            <button class="form__btn-add input-wrap-right" type="button" id="incrementAmountBtn">+</button>
+                                        </div>
+                                        <button class="form__btn-value input-five-button" type="button" id="mintAmount1">1</button>
+                                        <button class="form__btn-value input-ten-button" type="button" id="mintAmount3">3</button>
+                                        <button class="form__btn-value input-twenty-button" type="button" id="mintAmount5">5</button>
+                                    </div>
+                                    <button class="form__btn js-popup-open mb-4" type="button" id="connectWalletBtn">Connect wallet</button>
+                                    <button class="form__btn mint-button" type="button" id="mintButton">MINT Astronaut</button>
+                                    <div class="spinner-loader"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!--cards section ends-->
+
+
+        <!--footer section starts-->
+        <section class="dark">
+            <div class="container">
+
+                <footer class="mt-5 pt-5 big-font pb-3">
+                    <div class="row text-center text-white">
+                        <div class="col-4">
+                            <a href="https://www.10ct.io/legal-notice" target="_blank" style="color:#fff">LGL NTC</a>
+                        </div>
+                        <div class="col-4">
+                            <a href="https://www.10ct.io/terms-conditions" target="_blank" style="color:#fff">TRMS & CNDTNS</a>
+                        </div>
+                        <div class="col-4">
+                            <a href="https://www.10ct.io/privacy-policy" target="_blank" style="color:#fff">PRVCY PL</a>
+                        </div>
+                        <div class="col-12 mt-5">
+                            © 2022 BY 10CT | All Rights Reserved.
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </section>
+        <!--footer section ends-->
+    </div>
+
+
+    <!-- partial -->
+    <script src='assets/js/jquery.min.js'></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/web3-provider.js"></script>
+
+</body>
+
+</html>
